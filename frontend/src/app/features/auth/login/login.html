@@ -1,0 +1,138 @@
+<div class="login-wrapper">
+
+  <div class="login-card">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+      <h1>Welcome To RevConnect</h1>
+      <p>Connect. Review. Grow Together.</p>
+    </div>
+
+    <!-- RIGHT SIDE -->
+   <div class="right">
+
+  <!-- TITLE -->
+  <h2 *ngIf="!isRegisterMode">Sign In</h2>
+  <h2 *ngIf="isRegisterMode">Register</h2>
+
+  <!-- LOGIN FORM -->
+  <form *ngIf="!isRegisterMode"
+        (ngSubmit)="login()"
+        #loginForm="ngForm">
+
+    <input type="text"
+           placeholder="Username"
+           [(ngModel)]="username"
+           name="username"
+           required />
+
+    <input type="password"
+           placeholder="Password"
+           [(ngModel)]="password"
+           name="password"
+           required />
+
+    <button type="submit">Login</button>
+  </form>
+
+
+  <!-- REGISTER FORM -->
+  <form *ngIf="isRegisterMode"
+        (ngSubmit)="register()"
+        #registerForm="ngForm">
+
+    <input type="email"
+           placeholder="Email"
+           [(ngModel)]="email"
+           name="email"
+           required />
+
+    <input type="text"
+           placeholder="Username"
+           [(ngModel)]="username"
+           name="username"
+           required />
+
+    <input type="password"
+           placeholder="Password"
+           [(ngModel)]="password"
+           name="password"
+           required />
+
+    <!-- SECURITY QUESTION DROPDOWN -->
+    <select [(ngModel)]="securityQuestion"
+            name="securityQuestion"
+            required>
+
+      <option value="" disabled selected>
+        Select Security Question
+      </option>
+
+      <option value="PET_NAME">What is your pet's name?</option>
+      <option value="MOTHER_MAIDEN_NAME">What is your mother's maiden name?</option>
+      <option value="FIRST_SCHOOL">What was your first school name?</option>
+      <option value="FAVORITE_TEACHER">What is your favorite teacher's name?</option>
+      <option value="BIRTH_CITY">What city were you born in?</option>
+
+    </select>
+
+    <input type="text"
+           placeholder="Security Answer"
+           [(ngModel)]="securityAnswer"
+           name="securityAnswer"
+           required />
+
+    <!-- ROLE DROPDOWN -->
+   <select [(ngModel)]="role"
+        name="role"
+        required
+        class="form-input">
+
+  <option value="" disabled selected>
+    Select Role
+  </option>
+
+  <option value="CREATOR">Creator</option>
+  <option value="BUSINESS">Business</option>
+
+</select>
+
+    <button type="submit">Register</button>
+  </form>
+
+
+  <!-- SUCCESS MESSAGE -->
+  <p class="success" *ngIf="successMessage">
+    {{ successMessage }}
+  </p>
+
+  <!-- ERROR MESSAGE -->
+  <p class="error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </p>
+
+  <!-- FORGOT PASSWORD -->
+  <a class="forgot"
+     *ngIf="!isRegisterMode"
+     routerLink="/forgot-security">
+     Forgot Password?
+  </a>
+
+  <!-- SWITCH LINK -->
+  <p class="switch">
+    <span *ngIf="!isRegisterMode">
+      Don't have an account?
+      <span (click)="toggleMode()">Register</span>
+    </span>
+
+    <span *ngIf="isRegisterMode">
+      Already have an account?
+      <span (click)="toggleMode()">Login</span>
+    </span>
+  </p>
+
+</div>
+
+  </div>
+
+</div>

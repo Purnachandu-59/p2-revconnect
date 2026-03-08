@@ -1,0 +1,86 @@
+<div class="post-card">
+
+  <!-- HEADER -->
+ <div class="post-header">
+  <img [src]="post.authorAvatar || 'https://i.pravatar.cc/45'" />
+
+  <div class="header-info">
+    <h4>{{ post.authorName }}</h4>
+    <small>{{ post.createdAt | date:'medium' }}</small>
+  </div>
+
+  <!-- 3 DOT MENU -->
+  <div class="menu-wrapper" *ngIf="isOwner()">
+
+    <button class="menu-btn" (click)="toggleMenu()">⋯</button>
+
+    <div class="menu-dropdown" *ngIf="showMenu">
+      <div (click)="deletePost()" class="delete-option">
+        Delete Post
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- CONTENT -->
+  <p class="post-content">
+    {{ post.content }}
+  </p>
+
+  <img *ngIf="post.imageUrl"
+       [src]="post.imageUrl"
+       class="post-image"/>
+
+  <!-- ACTIONS -->
+  <div class="post-actions">
+
+    <button class="like-btn"
+            (click)="onLike()">
+      ❤️ {{ post.likes }}
+    </button>
+
+    <button class="comment-btn"
+            (click)="toggleComments()">
+      💬 {{ post.comments?.length || 0 }}
+    </button>
+
+  </div>
+
+  <!-- COMMENTS -->
+  <div class="comments-section" *ngIf="showComments">
+
+    <!-- Existing Comments -->
+    <div class="comment"
+         *ngFor="let c of post.comments">
+
+      <img [src]="c.authorAvatar || 'https://i.pravatar.cc/30'" />
+
+      <div class="comment-body">
+        <strong>{{ c.authorName }}</strong>
+        <p>{{ c.content }}</p>
+      </div>
+
+    </div>
+
+   <!-- Add Comment -->
+<div class="add-comment">
+
+  <input
+    [(ngModel)]="newComment"
+    placeholder="Write a comment..."
+    (keydown.enter)="submitComment()" />
+
+  <button
+    class="send-btn"
+    (click)="submitComment()"
+    [disabled]="!newComment.trim()">
+    Send
+  </button>
+
+</div>
+
+  </div>
+
+</div>

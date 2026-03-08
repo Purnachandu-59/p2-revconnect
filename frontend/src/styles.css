@@ -1,0 +1,17 @@
+
+
+html {
+  scroll-behavior: smooth;
+}
+body.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+body.dark .navbar,
+body.dark .profile-card,
+body.dark .post,
+body.dark .right-panel {
+  background: #1e293b;
+  color: #f1f5f9;
+}

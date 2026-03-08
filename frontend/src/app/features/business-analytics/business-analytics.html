@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+ 
+<div class="analytics-wrapper">
+ 
+  <!-- HEADER -->
+  <div class="analytics-header">
+    <div>
+      <h1 class="header-title">Business Analytics Dashboard</h1>
+      <p class="header-sub">Track your business growth and performance</p>
+    </div>
+ 
+    <div class="day-filter">
+      <button
+        *ngFor="let d of dayOptions"
+        class="day-btn"
+        [class.active]="selectedDays === d"
+        (click)="selectDays(d)">
+        {{ d }} Days
+      </button>
+    </div>
+  </div>
+ 
+  <!-- METRIC CARDS -->
+  <div class="stat-cards">
+ 
+    <div class="stat-card">
+      <div class="card-icon blue">👥</div>
+      <div class="card-value">{{ stats().totalFollowers }}</div>
+      <div class="card-label">Total Followers</div>
+    </div>
+ 
+    <div class="stat-card">
+      <div class="card-icon purple">🤝</div>
+      <div class="card-value">{{ stats().totalConnections }}</div>
+      <div class="card-label">Total Connections</div>
+    </div>
+ 
+    <div class="stat-card">
+      <div class="card-icon orange">👁️</div>
+      <div class="card-value">{{ stats().profileViews }}</div>
+      <div class="card-label">Profile Views</div>
+    </div>
+ 
+    <div class="stat-card">
+      <div class="card-icon green">📊</div>
+      <div class="card-value">{{ stats().postImpressions }}</div>
+      <div class="card-label">Post Impressions</div>
+    </div>
+ 
+    <div class="stat-card">
+      <div class="card-icon red">❤️</div>
+      <div class="card-value">{{ stats().postEngagement }}</div>
+      <div class="card-label">Post Engagement</div>
+    </div>
+ 
+   
+ 
+  </div>
+ 
+  <!-- CHART SECTION -->
+  <div class="charts-row">
+   <div class="chart-card">
+  <h3 class="chart-title">Monthly Growth</h3>
+  <div class="chart-container">
+    <canvas id="growthChart"></canvas>
+  </div>
+</div>
+ 
+<div class="chart-card">
+  <h3 class="chart-title">Engagement Trend</h3>
+  <div class="chart-container">
+    <canvas id="engagementChart"></canvas>
+  </div>
+</div>
+ 
+  </div>
+ 
+</div>
+ 

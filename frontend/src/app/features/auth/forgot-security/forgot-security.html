@@ -1,0 +1,69 @@
+<div class="login-wrapper">
+
+  <div class="login-card">
+
+    
+    <div class="left">
+      <h1>Welcome To RevConnect</h1>
+      <p>Connect. Review. Grow Together.</p>
+    </div>
+
+    <div class="right">
+
+      <h2>Reset Password</h2>
+
+      
+      <div *ngIf="step === 1">
+
+        <input
+          type="text"
+          placeholder="Enter Username"
+          [(ngModel)]="username"
+          name="username"
+        />
+
+        <button
+          type="button"
+          (click)="fetchQuestion()">
+          Next
+        </button>
+
+      </div>
+
+     
+      <div *ngIf="step === 2">
+
+        <p class="question">
+          {{ securityQuestion }}
+        </p>
+
+        <input
+          type="text"
+          placeholder="Security Answer"
+          [(ngModel)]="answer"
+          name="answer"
+        />
+
+        <input
+          type="password"
+          placeholder="New Password"
+          [(ngModel)]="newPassword"
+          name="newPassword"
+        />
+
+        <button
+          type="button"
+          (click)="resetPassword()">
+          Reset Password
+        </button>
+
+      </div>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+      <p class="success" *ngIf="message">{{ message }}</p>
+
+    </div>
+
+  </div>
+
+</div>

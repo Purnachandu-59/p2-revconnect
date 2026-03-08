@@ -1,0 +1,200 @@
+<app-navbar></app-navbar>
+
+<div class="network-wrapper">
+
+  <h2>My Network</h2>
+  <p class="subtitle">Manage your connections and discover new people</p>
+
+ 
+  <div class="stats-grid">
+    <div class="stat-card blue">
+      <h3>{{ connections.length }}</h3>
+      <p>Connections</p>
+    </div>
+
+    <div class="stat-card purple">
+      <h3>{{ connections.length }}</h3>
+      <p>Followers</p>
+    </div>
+
+    <div class="stat-card green">
+      <h3>{{ connections.length }}</h3>
+      <p>Following</p>
+    </div>
+
+    <div class="stat-card orange">
+      <h3>{{ pending.length }}</h3>
+      <p>Pending</p>
+    </div>
+  </div>
+
+
+  <div class="tabs">
+
+    <div (click)="setTab('connections')"
+         [class.active]="activeTab==='connections'">
+      Connections ({{ connections.length }})
+    </div>
+
+    <div (click)="setTab('followers')"
+         [class.active]="activeTab==='followers'">
+      Followers ({{ connections.length }})
+    </div>
+
+    <div (click)="setTab('following')"
+         [class.active]="activeTab==='following'">
+      Following ({{ connections.length }})
+    </div>
+
+    <div (click)="setTab('pending')"
+         [class.active]="activeTab==='pending'">
+      Pending ({{ pending.length }})
+    </div>
+
+    <div (click)="setTab('discover')"
+         [class.active]="activeTab==='discover'">
+      Discover
+    </div>
+
+  </div>
+
+  
+  <div *ngIf="activeTab==='connections'">
+
+    <div *ngIf="connections.length === 0">
+      <p>No connections yet.</p>
+    </div>
+
+    <div class="user-card"
+         *ngFor="let user of connections"
+         [routerLink]="['/profile', user.userId]">
+
+      <img [src]="user.profileImage || defaultImage">
+
+      <div class="info">
+        <h4>{{ user.username }}</h4>
+        <p>{{ user.bio }}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+  <div *ngIf="activeTab==='followers'">
+
+    <div *ngIf="connections.length === 0">
+      <p>No followers yet.</p>
+    </div>
+
+    <div class="user-card"
+         *ngFor="let user of connections"
+         [routerLink]="['/profile', user.userId]">
+
+      <img [src]="user.profileImage || defaultImage">
+
+      <div class="info">
+        <h4>{{ user.username }}</h4>
+        <p>{{ user.bio }}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+  <div *ngIf="activeTab==='following'">
+
+    <div *ngIf="connections.length === 0">
+      <p>No following yet.</p>
+    </div>
+
+    <div class="user-card"
+         *ngFor="let user of connections"
+         [routerLink]="['/profile', user.userId]">
+
+      <img [src]="user.profileImage || defaultImage">
+
+      <div class="info">
+        <h4>{{ user.username }}</h4>
+        <p>{{ user.bio }}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+  <div *ngIf="activeTab==='pending'">
+
+    <div *ngIf="pending.length === 0">
+      <p>No pending requests.</p>
+    </div>
+
+    <div class="user-card" *ngFor="let req of pending">
+
+      <img [src]="req.senderProfileImage || defaultImage">
+
+      <div class="info">
+        <h4>{{ req.senderUsername }}</h4>
+      </div>
+
+      <div class="actions">
+        <button (click)="accept(req.connectionId)">
+          Accept
+        </button>
+
+        <button class="reject-btn"
+                (click)="reject(req.connectionId)">
+          Reject
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+ 
+  <div *ngIf="activeTab==='discover'">
+
+    <div *ngIf="discoverUsers.length === 0">
+      <p>No users to discover.</p>
+    </div>
+
+    <div class="user-card"
+         *ngFor="let user of discoverUsers"
+         [routerLink]="['/profile', user.id]">
+
+      <img [src]="user.profileImage || defaultImage">
+
+      <div class="info">
+        <h4>{{ user.username }}</h4>
+        <p>{{ user.bio }}</p>
+      </div>
+
+      <div class="actions">
+
+        <button class="connected-btn"
+                *ngIf="isConnected(user.id)"
+                disabled>
+          Connected
+        </button>
+
+        <button class="pending-btn"
+                *ngIf="!isConnected(user.id) && isRequestSent(user.id)"
+                disabled>
+          Request Sent
+        </button>
+
+        <button *ngIf="!isConnected(user.id) && !isRequestSent(user.id)"
+                (click)="connect(user.id); $event.stopPropagation()">
+          Connect
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,188 @@
+<app-navbar></app-navbar>
+
+<div class="analytics-container">
+
+  <!-- HEADER -->
+  <div class="analytics-header">
+    <div>
+      <h1>Analytics Dashboard</h1>
+      <p>Track your performance and engagement metrics</p>
+    </div>
+
+    <div class="days-filter">
+      <button
+        *ngFor="let d of [7,30,90]"
+        [class.active]="selectedDays === d"
+        (click)="changeDays(d)">
+        {{ d }} Days
+      </button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div *ngIf="isLoading" class="loading-box">
+    Loading analytics...
+  </div>
+
+  <!-- CONTENT -->
+  <div *ngIf="summary && !isLoading">
+
+    <!-- STAT CARDS -->
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <div class="icon blue">👁</div>
+        <div class="stat-info">
+          <h2>{{ summary.totalReach | number }}</h2>
+          <span>Total Reach</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon red">❤</div>
+        <div class="stat-info">
+          <h2>{{ summary.totalLikes }}</h2>
+          <span>Total Likes</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon orange">💬</div>
+        <div class="stat-info">
+          <h2>{{ summary.totalComments }}</h2>
+          <span>Comments</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon purple">👥</div>
+        <div class="stat-info">
+          <h2>{{ summary.totalFollowers }}</h2>
+          <span>New Followers</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon indigo">📊</div>
+        <div class="stat-info">
+          <h2>{{ summary.engagementRate | number:'1.1-1' }}%</h2>
+          <span>Engagement Rate</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts-grid">
+
+      <!-- Weekly Engagement -->
+      <div class="chart-card engagement-summary-card">
+  <h3>Weekly Engagement</h3>
+
+  <div class="engagement-content">
+    <div class="engagement-circle">
+      {{ summary.engagementRate | number:'1.0-0' }}%
+    </div>
+
+    <div class="engagement-details">
+      <p>
+        Your content engagement rate for the last 
+        <strong>{{ selectedDays }} days</strong>
+      </p>
+
+      <div class="engagement-breakdown">
+        <div>
+          ❤️ <span>{{ summary.totalLikes }}</span> Likes
+        </div>
+        <div>
+          💬 <span>{{ summary.totalComments }}</span> Comments
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Follower Growth -->
+      <div class="chart-card">
+        <h3>Follower Growth</h3>
+
+        <div *ngIf="hasFollowerData; else noFollowers" class="chart-box">
+          <canvas #followerChart></canvas>
+        </div>
+
+        <ng-template #noFollowers>
+          <div class="no-data">
+            👥 No follower growth yet
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Reach & Impressions -->
+     <div class="chart-card reach-summary-card">
+  <h3>Reach & Impressions</h3>
+
+  <div class="reach-content">
+
+    <div class="reach-metric reach-box">
+      <div class="reach-icon">👁</div>
+      <div>
+        <h2>{{ summary.totalReach | number }}</h2>
+        <p>Total Reach</p>
+      </div>
+    </div>
+
+    <div class="reach-metric impression-box">
+      <div class="reach-icon">📢</div>
+      <div>
+        <h2>
+          {{ summary.totalReach + summary.totalLikes + summary.totalComments }}
+        </h2>
+        <p>Estimated Impressions</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reach-description">
+    Performance overview for the last 
+    <strong>{{ selectedDays }} days</strong>
+  </div>
+
+</div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-card">
+      <h3>Top Performing Posts</h3>
+
+      <table *ngIf="topPosts && topPosts.length > 0; else noPosts">
+        <thead>
+          <tr>
+            <th>Post</th>
+            <th>Likes</th>
+            <th>Comments</th>
+            <th>Shares</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let post of topPosts">
+            <td class="post-title">{{ post.content }}</td>
+            <td class="likes">{{ post.likes }}</td>
+            <td class="comments">{{ post.comments }}</td>
+            <td class="shares">{{ post.shares }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #noPosts>
+        <div class="no-data">
+          📝 No posts available for this period
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,72 @@
+2026-02-26 20:09:21 [restartedMain] INFO  o.e.f.FullStackRevConnectApplication - Starting FullStackRevConnectApplication using Java 17.0.12 with PID 5960 (C:\Users\Nagu\RevConnect-FullStack-Final\FullStackRevConnect\target\classes started by Nagu in C:\Users\Nagu\RevConnect-FullStack-Final\FullStackRevConnect)
+2026-02-26 20:09:21 [restartedMain] INFO  o.e.f.FullStackRevConnectApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-26 20:09:31 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-02-26 20:09:31 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-26 20:09:31 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-02-26 20:09:31 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-26 20:09:34 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-26 20:09:35 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42313c60
+2026-02-26 20:09:35 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-26 20:09:35 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-26 20:10:27 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-26 20:10:31 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@18abfd53, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@137c4eda, org.springframework.security.web.context.SecurityContextHolderFilter@31f29233, org.springframework.security.web.header.HeaderWriterFilter@295b17c3, org.springframework.web.filter.CorsFilter@561d65f7, org.springframework.security.web.authentication.logout.LogoutFilter@7b5b6382, org.example.fullstackrevconnect.common.security.JwtFilter@2f460433, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@555f3f36, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e63aec4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c391547, org.springframework.security.web.access.ExceptionTranslationFilter@747e482, org.springframework.security.web.access.intercept.AuthorizationFilter@120af5cf]
+2026-02-26 20:10:34 [restartedMain] INFO  o.e.f.FullStackRevConnectApplication - Started FullStackRevConnectApplication in 76.254 seconds (process running for 78.688)
+2026-02-26 20:10:34 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-26 20:10:34 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-02-26 20:24:21 [restartedMain] INFO  o.e.f.FullStackRevConnectApplication - Starting FullStackRevConnectApplication using Java 17.0.12 with PID 28320 (C:\Users\Nagu\RevConnect-FullStack-Final\FullStackRevConnect\target\classes started by Nagu in C:\Users\Nagu\RevConnect-FullStack-Final\FullStackRevConnect)
+2026-02-26 20:24:21 [restartedMain] INFO  o.e.f.FullStackRevConnectApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-26 20:24:33 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-02-26 20:24:33 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-26 20:24:33 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-02-26 20:24:33 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-26 20:24:36 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-26 20:24:39 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2db3e975
+2026-02-26 20:24:39 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-26 20:24:40 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-26 20:25:29 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-26 20:25:34 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@43a119a3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@45f3980b, org.springframework.security.web.context.SecurityContextHolderFilter@3cceae91, org.springframework.security.web.header.HeaderWriterFilter@7e2ce205, org.springframework.web.filter.CorsFilter@4c84d434, org.springframework.security.web.authentication.logout.LogoutFilter@19d12123, org.example.fullstackrevconnect.common.security.JwtFilter@380396b7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39301a4c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72ea38d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76abcc4b, org.springframework.security.web.access.ExceptionTranslationFilter@74745f17, org.springframework.security.web.access.intercept.AuthorizationFilter@72ef623b]
+2026-02-26 20:25:40 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-02-26 20:25:41 [restartedMain] INFO  o.e.f.FullStackRevConnectApplication - Started FullStackRevConnectApplication in 82.576 seconds (process running for 86.752)
+2026-02-26 20:25:41 [http-nio-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-26 20:25:41 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /login?from=%2Fswagger-ui.html
+2026-02-26 20:25:42 [http-nio-8081-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:25:42 [http-nio-8081-exec-1] WARN  o.a.c.util.SessionIdGeneratorBase - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [483] milliseconds.
+2026-02-26 20:25:42 [http-nio-8081-exec-1] DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8081/login?from=%2Fswagger-ui.html&continue to session
+2026-02-26 20:25:42 [http-nio-8081-exec-1] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2026-02-26 20:25:43 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error?from=%2Fswagger-ui.html
+2026-02-26 20:25:43 [http-nio-8081-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:25:43 [http-nio-8081-exec-1] DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8081/error?from=%2Fswagger-ui.html&continue to session
+2026-02-26 20:25:43 [http-nio-8081-exec-1] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2026-02-26 20:26:10 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui.html
+2026-02-26 20:26:10 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui.html
+2026-02-26 20:26:10 [http-nio-8081-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:10 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/index.html
+2026-02-26 20:26:10 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/index.html
+2026-02-26 20:26:10 [http-nio-8081-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:10 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-ui-bundle.js
+2026-02-26 20:26:10 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-ui-bundle.js
+2026-02-26 20:26:10 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-initializer.js
+2026-02-26 20:26:10 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-initializer.js
+2026-02-26 20:26:10 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/index.css
+2026-02-26 20:26:10 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/index.css
+2026-02-26 20:26:10 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-ui.css
+2026-02-26 20:26:10 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-ui.css
+2026-02-26 20:26:10 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2026-02-26 20:26:10 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2026-02-26 20:26:10 [http-nio-8081-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:11 [http-nio-8081-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:11 [http-nio-8081-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:11 [http-nio-8081-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:11 [http-nio-8081-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:11 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs/swagger-config
+2026-02-26 20:26:11 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs/swagger-config
+2026-02-26 20:26:12 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/favicon-32x32.png
+2026-02-26 20:26:12 [http-nio-8081-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/favicon-32x32.png
+2026-02-26 20:26:12 [http-nio-8081-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:12 [http-nio-8081-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:26:12 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2026-02-26 20:26:12 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2026-02-26 20:26:16 [http-nio-8081-exec-1] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 3999 ms
+2026-02-26 20:26:16 [http-nio-8081-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-02-26 20:34:31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-26 20:34:31 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

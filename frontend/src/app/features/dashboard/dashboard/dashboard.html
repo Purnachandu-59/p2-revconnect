@@ -1,0 +1,186 @@
+<app-navbar></app-navbar>
+
+<div class="dashboard-wrapper">
+  <div class="dashboard-container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="card profile-card" *ngIf="userService.user() as user">
+        <div class="profile-cover"></div>
+
+        <img
+          class="profile-avatar"
+          [src]="user.profileImage || 'https://i.pravatar.cc/150'"
+        />
+
+        <h3>{{ user.username }}</h3>
+        <p class="profile-bio">
+          {{ user.bio || 'Full Stack Developer' }}
+        </p>
+
+        <div class="profile-stats">
+          <div>
+            <strong>{{ connections.length }}</strong>
+            <span>Connections</span>
+          </div>
+
+          <div>
+            <strong>{{ connections.length }}</strong>
+            <span>Followers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MENU -->
+      <div class="card menu">
+
+        <!-- FEED -->
+        <div class="menu-item active"
+             (click)="goToFeed()">
+          <span class="menu-icon">🏠</span>
+          <span>Feed</span>
+        </div>
+
+        <!-- NETWORK -->
+        <div class="menu-item"
+             (click)="goToNetwork()">
+          <span class="menu-icon">👥</span>
+          <span>Network</span>
+        </div>
+
+       <!-- CREATOR ANALYTICS -->
+
+<div class="menu-item"
+
+     *ngIf="isCreator()"
+
+     (click)="goToCreatorAnalytics()">
+
+  <span class="menu-icon">📊</span>
+
+  <span>Analytics</span>
+
+</div>
+
+ 
+
+<!-- BUSINESS ANALYTICS -->
+
+<div class="menu-item"
+
+     *ngIf="isBusiness()"
+
+     (click)="goToBusinessAnalytics()">
+
+  <span class="menu-icon">📈</span>
+
+  <span>Business Analytics</span>
+
+</div>
+
+        <!-- TRENDING -->
+        <div class="menu-item">
+          <span class="menu-icon">🔥</span>
+          <span>Trending</span>
+        </div>
+
+      </div>
+
+    </aside>
+
+    <!-- CENTER FEED -->
+    <main class="feed">
+
+      <!-- CREATE POST -->
+      <div class="card create-post">
+        <div class="create-top">
+          <img
+            class="mini-avatar"
+            [src]="userService.user()?.profileImage || 'https://i.pravatar.cc/40'"
+          />
+
+          <input
+            [(ngModel)]="newPostContent"
+            placeholder="What's on your mind?"
+            (keydown.enter)="$event.preventDefault()"
+          />
+        </div>
+
+        <div class="create-actions">
+          <input type="file" accept="image/*"
+                 (change)="onImageSelected($event)" />
+
+          <button (click)="createPost()" class="post-btn">
+            Post
+          </button>
+        </div>
+      </div>
+
+      <!-- POSTS -->
+      <div class="feed-container">
+
+        <div *ngIf="loading && posts.length === 0">
+          <div class="skeleton-card" *ngFor="let s of [1,2,3]"></div>
+        </div>
+
+        <app-post-card
+          *ngFor="let post of posts"
+          [post]="post"
+          [currentUserId]="userService.user()?.id"
+          (like)="like($event)"
+          (commentAdded)="addComment($event)"
+          (postDeleted)="deletePost($event)">
+        </app-post-card>
+
+        <div class="loading" *ngIf="loading && posts.length > 0">
+          Loading more posts...
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- RIGHT PANEL -->
+    <aside class="right-panel">
+
+      <div class="card">
+        <h4>🔥 Trending Now</h4>
+
+        <div class="trend-item"
+            *ngFor="let tag of trendingTags">
+          {{ tag }}
+        </div>
+      </div>
+
+      <!-- PEOPLE YOU MAY KNOW -->
+      <div class="card">
+        <h4>✨ People You May Know</h4>
+
+        <div *ngIf="suggestedUsers.length === 0">
+          <p>No suggestions available.</p>
+        </div>
+
+        <div class="suggestion"
+             *ngFor="let user of suggestedUsers">
+
+          <img [src]="user.profileImage || 'https://i.pravatar.cc/40'" />
+
+          <div class="suggestion-info">
+            <strong>{{ user.username }}</strong>
+            <span>{{ user.bio }}</span>
+          </div>
+
+          <button class="follow-btn"
+                  (click)="connectFromSuggestion(user.id)">
+            Connect
+          </button>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+</div>

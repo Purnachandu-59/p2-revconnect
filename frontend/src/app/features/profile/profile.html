@@ -1,0 +1,191 @@
+<app-navbar></app-navbar>
+
+<div class="profile-page" *ngIf="profileUser">
+
+  <div class="profile-header-card">
+
+    <div class="profile-cover">
+      <div class="cover-content">
+        <h1>CONNECTING A GLOBAL COMMUNITY.</h1>
+        <p>Your professional modern network.</p>
+      </div>
+    </div>
+
+    <img class="profile-avatar"
+         [src]="profileUser.profileImage || 'https://i.pravatar.cc/200'" />
+
+    <div class="profile-body">
+
+      <!-- VIEW MODE -->
+      <div *ngIf="!editMode()" class="profile-view">
+
+        <div class="profile-top">
+
+          <div>
+            <h2>{{ profileUser.username }}</h2>
+
+            <p class="email" *ngIf="!viewingOtherUser">
+              {{ profileUser.email }}
+            </p>
+          </div>
+
+          <!-- MY PROFILE -->
+          <button class="btn-primary"
+                  *ngIf="!viewingOtherUser"
+                  (click)="enableEdit()">
+            Edit Profile
+          </button>
+
+          <!-- OTHER USER PROFILE -->
+          <div *ngIf="viewingOtherUser" class="connection-action">
+
+            <button *ngIf="isConnected(profileUser.id)"
+                    class="btn-connected"
+                    disabled>
+              Connected
+            </button>
+
+            <button *ngIf="!isConnected(profileUser.id) && isRequestSent(profileUser.id)"
+                    class="btn-pending"
+                    disabled>
+              Request Sent
+            </button>
+
+            <button *ngIf="!isConnected(profileUser.id) && !isRequestSent(profileUser.id)"
+                    class="btn-primary"
+                    (click)="sendConnectionRequest()">
+              Connect
+            </button>
+
+          </div>
+
+        </div>
+
+        <p class="bio-text">
+          {{ profileUser.bio || 'No bio added yet.' }}
+        </p>
+
+        <!-- ===== UPDATED STATS ===== -->
+        <div class="profile-stats">
+          <div>
+            <strong>{{ connections.length }}</strong>
+            <span>Followers</span>
+          </div>
+
+          <div>
+            <strong>{{ connections.length }}</strong>
+            <span>Following</span>
+          </div>
+
+          <div>
+            <strong>{{ connections.length }}</strong>
+            <span>Connections</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- EDIT MODE -->
+      <div *ngIf="editMode()" class="profile-edit">
+
+        <div class="edit-grid">
+
+          <div class="form-group">
+            <label>Username</label>
+            <input [(ngModel)]="profileUser.username" />
+          </div>
+
+          <div class="form-group">
+            <label>Bio</label>
+            <textarea rows="3" [(ngModel)]="profileUser.bio"></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label>Profile Image URL</label>
+            <input [(ngModel)]="profileUser.profileImage" />
+          </div>
+
+        </div>
+
+        <div class="edit-actions">
+          <button class="btn-primary" (click)="save()">Save</button>
+          <button class="btn-outline" (click)="cancel()">Cancel</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="profile-tabs">
+    <div [class.active]="activeTab==='posts'"
+         (click)="activeTab='posts'">Posts</div>
+
+    <div [class.active]="activeTab==='about'"
+         (click)="activeTab='about'">About</div>
+
+    <div [class.active]="activeTab==='connections'"
+         (click)="activeTab='connections'">
+      Connections ({{ connections.length }})
+    </div>
+  </div>
+
+  <!-- TAB CONTENT -->
+  <div class="profile-tab-content">
+
+    <!-- POSTS -->
+    <div *ngIf="activeTab==='posts'">
+
+      <app-post-card
+        *ngFor="let post of posts"
+        [post]="post"
+        [currentUserId]="profileUser.id"
+        (like)="like($event)"
+        (commentAdded)="addComment($event)"
+        (postDeleted)="deletePost($event)">
+      </app-post-card>
+
+      <div *ngIf="posts.length === 0" class="content-card">
+        <p>No posts yet.</p>
+      </div>
+
+    </div>
+
+    <!-- ABOUT -->
+    <div *ngIf="activeTab==='about'" class="content-card">
+      <p *ngIf="!viewingOtherUser">
+        <strong>Email:</strong> {{ profileUser.email }}
+      </p>
+
+      <p>
+        <strong>Bio:</strong> {{ profileUser.bio }}
+      </p>
+    </div>
+
+    <!-- CONNECTIONS -->
+    <div *ngIf="activeTab==='connections'" class="content-card">
+
+      <div *ngIf="connections.length === 0">
+        <p>No connections yet.</p>
+      </div>
+
+      <div class="user-card"
+           *ngFor="let connection of connections"
+           [routerLink]="['/profile', connection.userId]">
+
+        <img class="connection-avatar"
+             [src]="connection.profileImage || 'https://i.pravatar.cc/150'" />
+
+        <div class="info">
+          <h4>{{ connection.username }}</h4>
+          <p>{{ connection.bio }}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

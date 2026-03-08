@@ -11,7 +11,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class AuthController {
 
     private final AuthService authService;
@@ -22,8 +21,7 @@ public class AuthController {
         authService.register(request);
 
         return ResponseEntity.ok().body(
-                Map.of("message", "User registered successfully")
-        );
+                Map.of("message", "User registered successfully"));
     }
 
     @PostMapping("/login")
@@ -48,10 +46,8 @@ public class AuthController {
         authService.resetPasswordBySecurityQuestion(
                 request.getUsername(),
                 request.getAnswer(),
-                request.getNewPassword()
-        );
+                request.getNewPassword());
 
         return ResponseEntity.ok("Password updated successfully");
     }
 }
-

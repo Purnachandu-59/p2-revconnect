@@ -1,5 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface User {
   id: number;
@@ -27,44 +28,39 @@ export class UserService {
       });
   }
 
-  updateUser(updated: Partial<User>) {
+  updateUser(updated: Partial<User>): Observable<User> {
     return this.http.put<User>(`${this.baseUrl}/users/me`, updated);
   }
 
-  getUserById(id: number) {
+  getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/users/${id}`);
   }
 
-  searchUsers(query: string) {
-    return this.http.get<User[]>(
-      `${this.baseUrl}/users/search?query=${query}`
-    );
+  searchUsers(query: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/users/search?query=${query}`);
   }
 
-  discoverUsers() {
+  discoverUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/users/discover`);
   }
 
-  sendRequest(receiverId: number) {
-    return this.http.post(
-      `${this.baseUrl}/connections/request/${receiverId}`,
-      {}
-    );
+  sendRequest(receiverId: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/connections/request/${receiverId}`, {});
   }
 
-  getConnections() {
+  getConnections(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/connections`);
   }
 
-  getPendingRequests() {
+  getPendingRequests(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/connections/pending`);
   }
 
-  acceptRequest(id: number) {
+  acceptRequest(id: number): Observable<any> {
     return this.http.put(`${this.baseUrl}/connections/accept/${id}`, {});
   }
 
-  rejectRequest(id: number) {
+  rejectRequest(id: number): Observable<any> {
     return this.http.put(`${this.baseUrl}/connections/reject/${id}`, {});
   }
 }

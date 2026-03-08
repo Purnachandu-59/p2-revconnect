@@ -15,13 +15,9 @@ export interface User {
 export class UserService {
 
   private http = inject(HttpClient);
-
-  
-  private baseUrl = 'http://localhost:8080/api';
+  private baseUrl = 'http://51.20.85.38:8080/api';
 
   user = signal<User | null>(null);
-
-  // USER 
 
   loadUser() {
     this.http.get<User>(`${this.baseUrl}/users/me`)
@@ -39,21 +35,15 @@ export class UserService {
     return this.http.get<User>(`${this.baseUrl}/users/${id}`);
   }
 
-  
-
   searchUsers(query: string) {
     return this.http.get<User[]>(
       `${this.baseUrl}/users/search?query=${query}`
     );
   }
 
-
-
   discoverUsers() {
     return this.http.get<User[]>(`${this.baseUrl}/users/discover`);
   }
-
-  
 
   sendRequest(receiverId: number) {
     return this.http.post(
@@ -63,29 +53,18 @@ export class UserService {
   }
 
   getConnections() {
-    return this.http.get<User[]>(
-      `${this.baseUrl}/connections`
-    );
+    return this.http.get<User[]>(`${this.baseUrl}/connections`);
   }
 
   getPendingRequests() {
-    return this.http.get<any[]>(
-      `${this.baseUrl}/connections/pending`
-    );
+    return this.http.get<any[]>(`${this.baseUrl}/connections/pending`);
   }
 
   acceptRequest(id: number) {
-    return this.http.put(
-      `${this.baseUrl}/connections/accept/${id}`,
-      {}
-    );
+    return this.http.put(`${this.baseUrl}/connections/accept/${id}`, {});
   }
 
   rejectRequest(id: number) {
-    return this.http.put(
-      `${this.baseUrl}/connections/reject/${id}`,
-      {}
-    );
+    return this.http.put(`${this.baseUrl}/connections/reject/${id}`, {});
   }
-
 }

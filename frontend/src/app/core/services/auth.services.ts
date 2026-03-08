@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:8080/api/auth';
+  private baseUrl = 'http://51.20.85.38:8080/api/auth';
 
   constructor(private http: HttpClient) {}
 
@@ -17,19 +17,20 @@ export class AuthService {
   login(data: any) {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
-  getSecurityQuestion(username: string) {
-  return this.http.post<string>(
-    `${this.baseUrl}/security-question`,
-    { username },
-    { responseType: 'text' as 'json' }
-  );
-}
 
-resetBySecurity(data: any) {
-  return this.http.post<string>(
-    `${this.baseUrl}/reset-by-security`,
-    data,
-    { responseType: 'text' as 'json' }
-  );
-}
+  getSecurityQuestion(username: string) {
+    return this.http.post<string>(
+      `${this.baseUrl}/security-question`,
+      { username },
+      { responseType: 'text' as 'json' }
+    );
+  }
+
+  resetBySecurity(data: any) {
+    return this.http.post<string>(
+      `${this.baseUrl}/reset-by-security`,
+      data,
+      { responseType: 'text' as 'json' }
+    );
+  }
 }
